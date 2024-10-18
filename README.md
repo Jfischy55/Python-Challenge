@@ -5,3 +5,5 @@ https://youtu.be/HnwrNrMv03g?si=317mpa0KlWTM1vc8
 
 The main problem I was having was getting my code to properly run in the Git Bash terminal, I had the output messed up which the video helped me figure out.
 I'm still having issues getting the code to run properly, it seems like it isn't pulling from the correct files for some reason, planning on asking for help in office hours during Thursday's class.
+
+Was able to get help in office hours to get it to actually run and display the way I wanted, still trying to figure out where I went wrong in the greatest increase and decrease, but haven't got it yet, hopefully can upload before deadline.
