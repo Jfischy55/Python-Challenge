@@ -6,8 +6,8 @@ import csv
 import os
 
 # Files to load and output (update with correct file paths)
-file_to_load = os.path.join("Resources", "budget_data.csv")  # Input file path
-file_to_output = os.path.join("analysis", "budget_analysis.txt")  # Output file path
+file_to_load = os.path.join("../", "Resources", "budget_data.csv")  # Input file path
+file_to_output = os.path.join("../", "analysis", "budget_analysis.txt")  # Output file path
 
 # Define variables to track the financial data
 total_months = 0
@@ -37,28 +37,28 @@ with open(file_to_load) as financial_data:
 
         # Track the total
         total_months += 1
-        total_net = total_net + int(row["Net Profit"])
+        total_net = total_net + int(row[1])
 
         # Track the net change
-        net_change = int(row["Net Profit"]) - previous_net
+        net_change = int(row[1]) - previous_net
         # Calculating the revenue change
-        previous_net - int(row["Net Profit"])
+        previous_net - int(row[1])
         # Updating previous revenue
         net_change_list = net_change_list + [net_change]
         # Appending revenue change to revenue change list at the end of the list
-        month_of_change = month_of_change + [row["Date"]]
+        month_of_change = month_of_change + [row[0]]
         # Appending month changing (i.e., tracking the months) at end of list
 
         # Calculate the greatest increase in profits (month and amount)
         if (net_change > greatest_net_increase[1]):
-            greatest_net_increase[0] = row["Date"]
+            greatest_net_increase[0] = row[0]
             greatest_net_increase[1] = net_change
             # Changing values of the array based one prior greatest net increase
             # And comparing it to the new net change, and continually updating 
 
         # Calculate the greatest decrease in losses (month and amount)
         if (net_change < greatest_net_decrease[1]):
-            greatest_net_decrease[0] = row["Date"]
+            greatest_net_decrease[0] = row[0]
             greatest_net_decrease[1] = net_change
             # Doing the same for decrease as done previously for increase
 
@@ -68,13 +68,13 @@ net_avg = sum(net_change_list) / len(net_change_list)
 
 # Generate the output summary
 output_summary = (
-    f"Financial Analysis"
-    f"----------------------------"
-    f"Total Months: {total_months}"
-    f"Total: ${total_net}"
-    f"Average Change: ${net_avg}"
-    f"Greatest Increase in Profits: {greatest_net_increase[0]} (${greatest_net_increase[1]})"
-    f"Greatest Decrease in Profits: {greatest_net_decrease[0]} (${greatest_net_decrease[1]})"
+    f"Financial Analysis\n"
+    f"----------------------------\n"
+    f"Total Months: {total_months}\n"
+    f"Total: ${total_net}\n"
+    f"Average Change: ${net_avg}\n"
+    f"Greatest Increase in Profits: {greatest_net_increase[0]} (${greatest_net_increase[1]})\n"
+    f"Greatest Decrease in Profits: {greatest_net_decrease[0]} (${greatest_net_decrease[1]})\n"
 )
 
 # Print the output
